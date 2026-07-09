@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rahul Kumar | Frontend Developer",
-  description: "Portfolio of Rahul Kumar, a Senior Frontend Developer with Backend Expertise.",
+  title: "Rahul Kumar | Full Stack Developer",
+  description: "Portfolio of Rahul Kumar — Full Stack Developer with 5+ years of experience in MERN, React Native, and Next.js. Based in Gurgaon, India. Open to opportunities.",
 };
 
 export default function RootLayout({
@@ -32,9 +32,10 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col selection:bg-accent selection:text-white">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="emergent"
+          enableSystem={false}
           disableTransitionOnChange
+          themes={["light", "dark", "emergent", "sunset", "nord"]}
         >
           {children}
         </ThemeProvider>

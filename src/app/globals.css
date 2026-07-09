@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+:root, .light {
   --background: #f8fafc;
   --foreground: #0f172a;
   --accent: #2563eb;
@@ -18,6 +18,50 @@
   --border: rgba(255, 255, 255, 0.1);
 }
 
+/* ── NEW: Emergent (Cyberpunk Neon) ── */
+.emergent {
+  --background: #050508;
+  --foreground: #e0e0e8;
+  --accent: #10b981;          /* Emerald green */
+  --text-muted: #6b7280;
+  --card: rgba(16, 185, 129, 0.05);
+  --border: rgba(16, 185, 129, 0.15);
+}
+
+.emergent body {
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center;
+  animation: bgScroll 20s linear infinite;
+}
+
+@keyframes bgScroll {
+  from { background-position: 0 0; }
+  to { background-position: 30px 30px; }
+}
+
+/* ── NEW: Sunset (Warm Amber) ── */
+.sunset {
+  --background: #1a1025;
+  --foreground: #fef3c7;
+  --accent: #f59e0b;          /* Amber */
+  --text-muted: #a78bfa;
+  --card: rgba(245, 158, 11, 0.06);
+  --border: rgba(245, 158, 11, 0.15);
+}
+
+/* ── NEW: Nord (Arctic Frost) ── */
+.nord {
+  --background: #2e3440;
+  --foreground: #eceff4;
+  --accent: #88c0d0;          /* Frost cyan */
+  --text-muted: #8696a7;
+  --card: rgba(136, 192, 208, 0.06);
+  --border: rgba(136, 192, 208, 0.12);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -30,10 +74,10 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Custom Utilities for Premium Feel */
@@ -89,3 +133,32 @@ body {
     transform: translateY(0);
   }
 }
+
+/* ── Sticky header glass effect ── */
+.header-sticky {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--background) 80%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Theme transition helper ── */
+.theme-transitioning,
+.theme-transitioning * {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+}
+
+/* ── Neon glow for emergent theme ── */
+.emergent .glow-card:hover {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* ── Additional animation delays ── */
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+
+/* ── Scroll margin for sticky header offset ── */
+.scroll-mt-header { scroll-margin-top: 80px; }

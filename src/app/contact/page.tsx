@@ -50,11 +50,8 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="w-full min-h-screen flex flex-col bg-background">
-      {/* Header Container */}
-      <div className="px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pt-6 md:pt-10">
-        <Header />
-      </div>
+    <main className="w-full min-h-screen flex flex-col bg-background overflow-x-clip">
+      <Header />
 
       {/* Form Container */}
       <div className="flex-1 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto w-full py-16 md:py-24 flex flex-col justify-center animate-fade-in-up">
