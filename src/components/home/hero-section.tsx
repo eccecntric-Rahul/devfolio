@@ -31,57 +31,113 @@ export function HeroSection() {
   };
 
   return (
-    <section className="w-full relative flex flex-col pt-6 md:pt-2 min-h-[90vh]">
+    <section className="w-full relative flex flex-col pt-4 md:pt-12 justify-center">
       <motion.div 
-        className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-center z-10 pb-24 lg:pb-32"
+        className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center z-10 pb-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Left Column: Name & Socials */}
-        <div className="flex flex-col items-center lg:items-start order-2 lg:order-1 text-center lg:text-left">
-          <motion.h1 variants={itemVariants} className="text-6xl sm:text-7xl lg:text-[5rem] xl:text-[6.5rem] font-extrabold leading-[1.05] tracking-tight mb-2">
-            {firstName} <br className="hidden lg:block" /> {lastName}.
+        {/* Left Column: Text Content */}
+        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Label */}
+          <motion.p 
+            variants={itemVariants} 
+            className="text-accent text-xs md:text-sm font-bold mb-3 tracking-widest uppercase"
+          >
+            - Introducing
+          </motion.p>
+          
+          {/* Name */}
+          <motion.h1 
+            variants={itemVariants} 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-4"
+          >
+            {firstName} <span className="text-accent">{lastName}.</span>
           </motion.h1>
-          <motion.div variants={itemVariants} className="w-16 md:w-24 h-1.5 md:h-2 bg-accent mt-2 md:mt-3 mx-auto lg:mx-0 rounded-sm"></motion.div>
+          
+          {/* Tagline */}
+          <motion.h2 
+            variants={itemVariants} 
+            className="text-2xl sm:text-3xl lg:text-[2.25rem] font-semibold mb-6 leading-snug text-foreground/90"
+          >
+            {personalInfo.tagline.split(",")[0]}, <span className="text-muted/80">{personalInfo.tagline.split(",").slice(1).join(",").trim()}</span>
+          </motion.h2>
+          
+          {/* Bio */}
+          <motion.p 
+            variants={itemVariants} 
+            className="text-muted text-sm md:text-base lg:text-lg mb-8 leading-relaxed max-w-xl"
+          >
+            I'm a passionate developer with {personalInfo.yearsOfExperience} years of experience. From engineering real-time trading dashboards to delivering scalable mobile apps, I build robust, high-performance solutions.
+          </motion.p>
+          
+          {/* Action Buttons */}
+          <motion.div 
+            variants={itemVariants} 
+            className="flex flex-col sm:flex-row gap-4 mb-10 w-full sm:w-auto"
+          >
+            <a 
+              href={personalInfo.resumePdf} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="cursor-pointer bg-accent text-white font-bold px-8 py-4 rounded-full shadow-[0_0_20px_rgba(var(--accent),0.25)] hover:shadow-[0_0_30px_rgba(var(--accent),0.4)] hover:bg-accent/90 transition-all duration-300 text-center text-sm md:text-base"
+            >
+              Download Resume
+            </a>
+            <Link 
+              href="#experience" 
+              className="cursor-pointer border border-border bg-card/30 hover:bg-card/60 backdrop-blur-sm text-foreground font-semibold px-8 py-4 rounded-full transition-all duration-300 text-center flex items-center justify-center gap-2 group text-sm md:text-base"
+            >
+              View Experience 
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+          </motion.div>
 
-          <motion.div variants={itemVariants} className="flex space-x-6 mt-8 md:mt-10 text-xl md:text-2xl text-muted justify-center lg:justify-start w-full">
-            <a href={personalInfo.linkedIn} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-foreground hover:scale-110 transition-all duration-300">
+          {/* Socials as Glassmorphic Badges */}
+          <motion.div 
+            variants={itemVariants} 
+            className="flex gap-4 justify-center lg:justify-start w-full"
+          >
+            <a 
+              href={personalInfo.linkedIn} 
+              target="_blank" 
+              rel="noreferrer" 
+              aria-label="LinkedIn" 
+              className="cursor-pointer h-12 w-12 rounded-full border border-border bg-card/30 flex items-center justify-center text-muted hover:text-foreground hover:border-accent/40 hover:bg-accent/10 hover:shadow-[0_0_15px_rgba(var(--accent),0.2)] hover:scale-110 transition-all duration-300"
+            >
               <FaLinkedinIn />
             </a>
-            <a href={personalInfo.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-foreground hover:scale-110 transition-all duration-300">
+            <a 
+              href={personalInfo.github} 
+              target="_blank" 
+              rel="noreferrer" 
+              aria-label="GitHub" 
+              className="cursor-pointer h-12 w-12 rounded-full border border-border bg-card/30 flex items-center justify-center text-muted hover:text-foreground hover:border-accent/40 hover:bg-accent/10 hover:shadow-[0_0_15px_rgba(var(--accent),0.2)] hover:scale-110 transition-all duration-300"
+            >
               <FaGithub />
             </a>
-            <a href={`mailto:${personalInfo.email}`} aria-label="Email" className="hover:text-foreground hover:scale-110 transition-all duration-300">
+            <a 
+              href={`mailto:${personalInfo.email}`} 
+              aria-label="Email" 
+              className="cursor-pointer h-12 w-12 rounded-full border border-border bg-card/30 flex items-center justify-center text-muted hover:text-foreground hover:border-accent/40 hover:bg-accent/10 hover:shadow-[0_0_15px_rgba(var(--accent),0.2)] hover:scale-110 transition-all duration-300"
+            >
               <FaEnvelope />
             </a>
           </motion.div>
         </div>
 
-        {/* Center Column: Image */}
-        <motion.div variants={itemVariants} className="flex justify-center items-center order-1 lg:order-2 relative w-full max-w-sm sm:max-w-md mx-auto lg:max-w-none">
+        {/* Right Column: Visual Portal */}
+        <motion.div 
+          variants={itemVariants} 
+          className="lg:col-span-5 flex justify-center items-center relative w-full lg:order-2"
+        >
           <HeroImage />
         </motion.div>
-
-        {/* Right Column: Intro */}
-        <div className="flex flex-col items-center lg:items-start order-3 lg:order-3 text-center lg:text-left mt-8 lg:mt-0">
-          <motion.p variants={itemVariants} className="text-muted text-xs md:text-sm font-semibold mb-3 tracking-widest uppercase">- Introducing</motion.p>
-          <motion.h2 variants={itemVariants} className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold mb-4 leading-snug text-foreground">
-            {personalInfo.tagline.split(",")[0]}, <br className="hidden xl:block" /> {personalInfo.tagline.split(",").slice(1).join(",").trim()}
-          </motion.h2>
-          <motion.p variants={itemVariants} className="text-muted text-sm md:text-base lg:text-lg mb-6 leading-relaxed max-w-sm md:max-w-md mx-auto lg:mx-0">
-            I'm a passionate developer with {personalInfo.yearsOfExperience} years of experience. From engineering real-time trading dashboards at {personalInfo.currentCompany.split(" ")[0]} to delivering scalable mobile apps, I build robust, high-performance solutions.
-          </motion.p>
-          <motion.div variants={itemVariants}>
-            <Link href="#experience" className="text-accent font-bold text-base md:text-lg flex items-center hover:opacity-80 transition-opacity group">
-              View Experience <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </motion.div>
-        </div>
       </motion.div>
 
       {/* Infinite Tech Ticker */}
-      <div className="absolute bottom-12 left-0 w-full overflow-hidden border-y border-border/40 bg-card/30 backdrop-blur-sm py-3 z-0 flex whitespace-nowrap">
+      <div className="relative w-[100vw] left-1/2 -translate-x-1/2 overflow-hidden border-y border-border/40 bg-card/30 backdrop-blur-sm py-3 my-12 lg:my-20 z-0 flex whitespace-nowrap">
         <motion.div
           className="flex gap-8 items-center"
           animate={{ x: ["0%", "-33.33%"] }}
@@ -95,8 +151,6 @@ export function HeroSection() {
           ))}
         </motion.div>
       </div>
-
-
     </section>
   );
 }

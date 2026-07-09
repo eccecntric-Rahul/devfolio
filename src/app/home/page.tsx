@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Wrapper */}
-      <div className="flex flex-col min-h-[calc(100vh-80px)] px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pt-6 md:pt-10">
+      <div className="flex flex-col min-h-[calc(100vh-76px)] px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto w-full pt-0">
         <HeroSection />
       </div>
 
