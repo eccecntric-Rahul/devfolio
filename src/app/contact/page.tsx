@@ -24,6 +24,14 @@ export default function ContactPage() {
 
     // Web3Forms Integration
     try {
+      const access_key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      
+      if (!access_key) {
+        console.error("Web3Forms access key is missing! Please add NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY to your .env.local file.");
+        setStatus("error");
+        return;
+      }
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -31,7 +39,7 @@ export default function ContactPage() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE", // User needs to replace this
+          access_key,
           ...formData,
         }),
       });

@@ -1,6 +1,6 @@
 "use client";
 
-import { FaCode } from "react-icons/fa";
+import { FaCode, FaArrowRight } from "react-icons/fa";
 import { skillsWithLevels } from "@/data/resume-data";
 import { motion, Variants } from "framer-motion";
 
@@ -31,17 +31,24 @@ export function SkillsSection() {
   return (
     <section id="skills" className="w-full py-16 md:py-24 scroll-mt-header">
       <motion.div 
-        className="flex flex-col sm:flex-row items-center sm:items-end gap-4 mb-10 md:mb-16 text-center sm:text-left"
+        className="flex flex-col sm:flex-row items-center justify-between sm:items-end gap-4 mb-10 md:mb-16 text-center sm:text-left w-full"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <FaCode className="text-3xl md:text-4xl text-accent hidden sm:block mb-1" />
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Technical Arsenal</h2>
+        <div className="flex items-center sm:items-end gap-4">
+          <FaCode className="text-3xl md:text-4xl text-accent hidden sm:block mb-1" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Technical Arsenal</h2>
+        </div>
+        
+        {/* Mobile Swipe Indicator */}
+        <div className="flex md:hidden items-center gap-2 text-accent/80 text-sm font-semibold tracking-wider uppercase animate-pulse">
+          Swipe <FaArrowRight className="text-xs" />
+        </div>
       </motion.div>
       
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+        className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:gap-8 md:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -51,7 +58,7 @@ export function SkillsSection() {
           <motion.div 
             key={category} 
             variants={itemVariants}
-            className="bg-card glow-card border border-border p-6 md:p-8 rounded-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1"
+            className="min-w-[85vw] sm:min-w-[400px] snap-center md:min-w-0 bg-card glow-card border border-border p-6 md:p-8 rounded-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1"
           >
             <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2 border-b border-border/50 pb-3">
               <span className="w-2.5 h-2.5 bg-accent rounded-full group-hover:shadow-[0_0_10px_rgba(var(--accent),0.8)] transition-shadow"></span> 

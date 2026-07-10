@@ -1,6 +1,6 @@
 "use client";
 
-import { FaFolderOpen, FaExternalLinkAlt } from "react-icons/fa";
+import { FaFolderOpen, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import { projects } from "@/data/resume-data";
 import { motion, Variants } from "framer-motion";
 
@@ -26,17 +26,24 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="w-full py-16 md:py-24 scroll-mt-header">
       <motion.div 
-        className="flex flex-col sm:flex-row items-center sm:items-end gap-4 mb-10 md:mb-16 text-center sm:text-left"
+        className="flex flex-col sm:flex-row items-center justify-between sm:items-end gap-4 mb-10 md:mb-16 text-center sm:text-left w-full"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <FaFolderOpen className="text-3xl md:text-4xl text-accent hidden sm:block mb-1" />
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Key Projects</h2>
+        <div className="flex items-center sm:items-end gap-4">
+          <FaFolderOpen className="text-3xl md:text-4xl text-accent hidden sm:block mb-1" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Key Projects</h2>
+        </div>
+        
+        {/* Mobile Swipe Indicator */}
+        <div className="flex md:hidden items-center gap-2 text-accent/80 text-sm font-semibold tracking-wider uppercase animate-pulse">
+          Swipe <FaArrowRight className="text-xs" />
+        </div>
       </motion.div>
       
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -47,7 +54,7 @@ export function ProjectsSection() {
             key={idx} 
             variants={cardVariants}
             whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            className="bg-card glow-card border border-border p-6 md:p-8 rounded-2xl transition-shadow duration-300 group flex flex-col h-full relative overflow-hidden shadow-lg hover:shadow-[0_10px_30px_rgba(var(--accent),0.15)]"
+            className="min-w-[85vw] sm:min-w-[400px] snap-center md:min-w-0 bg-card glow-card border border-border p-6 md:p-8 rounded-2xl transition-shadow duration-300 group flex flex-col h-full relative overflow-hidden shadow-lg hover:shadow-[0_10px_30px_rgba(var(--accent),0.15)]"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-accent transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
             
