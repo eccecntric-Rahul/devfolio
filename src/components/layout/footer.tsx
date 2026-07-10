@@ -67,7 +67,7 @@ export function Footer() {
 
       <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-muted text-sm relative z-10">
         <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
-        <p>Built with <span className="text-accent font-semibold">Next.js</span> & <span className="text-accent font-semibold">Tailwind CSS</span></p>
+        <p>Built with ❤️ by {personalInfo.name}</p>
       </div>
     </footer>
   );

@@ -17,7 +17,7 @@ export function ExperienceSection() {
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">Professional Journey</h2>
       </motion.div>
       
-      <div className="relative border-l-2 border-border/60 pl-6 sm:pl-10 space-y-12 md:space-y-16 ml-2 sm:ml-4">
+      <div className="relative border-l-0 sm:border-l-2 border-border/60 pl-0 sm:pl-10 space-y-8 sm:space-y-12 md:space-y-16 ml-0 sm:ml-4">
         {experiences.map((exp, idx) => (
           <motion.div 
             key={idx} 
@@ -29,7 +29,7 @@ export function ExperienceSection() {
           >
             {/* Timeline Node */}
             <motion.div 
-              className="absolute -left-[35px] sm:-left-[49px] top-1.5 w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-background border-4 border-accent transition-all duration-300 group-hover:bg-accent group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(var(--accent),0.5)]"
+              className="hidden sm:block absolute -left-[49px] top-1.5 w-5 h-5 rounded-full bg-background border-4 border-accent transition-all duration-300 group-hover:bg-accent group-hover:scale-125 group-hover:shadow-[0_0_15px_rgba(var(--accent),0.5)]"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
