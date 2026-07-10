@@ -7,8 +7,8 @@ export const personalInfo = {
   tagline: "Full Stack Developer, specializing in modern web & mobile apps.",
   email: "rk2655415@gmail.com",
   phone: "+91 9015709221",
-  location: "Gurgaon (Gurugram), Haryana, India",
-  locationShort: "Gurgaon, India",
+  location: "Delhi NCR, India",
+  locationShort: "Delhi NCR, India",
   linkedIn: "https://www.linkedin.com/in/rahul-kumar-821109187/",
   github: "https://github.com/eccecntric-Rahul",
   portfolio: "https://krrahul.netlify.app",
@@ -105,7 +105,7 @@ export const experiences = [
   {
     role: "Sr. Software Developer (SDE-2)",
     company: "Planify Capital Limited",
-    location: "Gurgaon, India",
+    location: "Delhi NCR, India",
     period: "June 2023 – Present",
     isCurrent: true,
     points: [
@@ -122,7 +122,7 @@ export const experiences = [
   {
     role: "Software Developer",
     company: "Salescode.ai",
-    location: "Gurgaon, India",
+    location: "Delhi NCR, India",
     period: "July 2021 – June 2023",
     isCurrent: false,
     points: [
